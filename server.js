@@ -1,3 +1,6 @@
+//SPRINT 1
+
+
 import express from "express"
 
 const app = express()
@@ -51,7 +54,10 @@ app.listen(porta, () => {
     console.log(`Servidor rodando em http://localhost:${porta}`)
 })
 
-//-------------------------------------------------------------------------------------------------------------------------------------//
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+//SPRINT 2
+
+
 const mensagens = [
   { id: 1, usuario: "Ana", texto: "Bom dia!" },
   { id: 2, usuario: "Pedro", texto: "Olá!" },
@@ -66,6 +72,7 @@ app.get("/", (req, res) => res.send("Servidor rodando! 🚀"));
 
 app.get("/status", (req, res) => res.json({ status: "online", sprint: 2 }));
 
+ 
 app.get("/sobre", (req, res) => res.send("Projeto Mensageiro Local"));
 
 app.get("/mensagens", (req, res) => res.json(listarMensagens()));
@@ -78,7 +85,25 @@ app.get("/mensagens/:id", (req, res) => {
 
 app.get("/total-mensagens", (req, res) => res.json({ total: mensagens.length }));
 
-app.listen(PORT, "0.0.0.0", () => {
-  console.log(`Servidor em http://localhost:${PORT}`);
-});
+app.listen(porta, () => {
+    console.log(`Servidor rodando em http://localhost:${porta}`)
+})
 
+
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+//SPRINT 3
+
+
+function consultar(falhar = false) {
+    return new Promise((resolve, reject) => {
+        setTimeout(() =>{
+    falhar
+    ?reject(new Error("falhou"))
+    : resolve(mensagens);
+        }, 1000);
+    });
+}
+
+app.listen(porta, () => {
+    console.log(`Servidor rodando em http://localhost:${porta}`)
+})
