@@ -107,3 +107,10 @@ function consultar(falhar = false) {
 app.listen(porta, () => {
     console.log(`Servidor rodando em http://localhost:${porta}`)
 })
+
+
+app.get("/mensagens-then", (req,res) => {
+    consultar()
+    .then(lista => res.json(lista))
+    .catch(() => res.status(500).json({erro: "Falha na consulta"}));
+});
